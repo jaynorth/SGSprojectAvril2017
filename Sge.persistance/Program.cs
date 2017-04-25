@@ -11,8 +11,23 @@ namespace Sge.persistance
     {
         public static void Main(string[] args)
         {
+
+            Etudiants etudiant = new Etudiants
+            {
+
+                Nom = "Dupont",
+                Prenom = "Roger",
+                Rue = "Tivoli 56",
+                Npa = "1018",
+                Localite = "Renens"
+
+            };
+
             using (SGS_dbContainer context = new SGS_dbContainer())
             {
+
+                context.Etudiants.Add(etudiant);
+                context.SaveChanges();
 
                 List<Etudiants> listeEtudiants = new List<Etudiants>(context.Etudiants);
 
