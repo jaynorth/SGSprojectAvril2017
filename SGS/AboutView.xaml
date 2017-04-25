@@ -1,0 +1,14 @@
+﻿<Window x:Class="SGS.AboutView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SGS"
+        mc:Ignorable="d"
+        Title="AboutView" Height="300" Width="300">
+    <Grid Background="BLUE">
+        <Button x:Name="button" Content="Close" HorizontalAlignment="Left" Height="23" Margin="115,158,0,0" VerticalAlignment="Top" Width="73" Click="button_Click"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="18,42,0,0" TextWrapping="Wrap" Text="DAKISGJKADSJGKDJASGKJDAKSGJKDASJGKDASGJ" VerticalAlignment="Top" Height="53" Width="255" Background="Beige"/>
+
+    </Grid>
+</Window>

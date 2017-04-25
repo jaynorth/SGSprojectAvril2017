@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SGS", "SGS\SGS.csproj", "{F85F534B-24AB-43AB-983E-EB6B49117B28}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Presentation", "1 - Presentation", "{AEF5C389-0EE1-4A96-B1E8-B9527E6E4764}"
+	ProjectSection(SolutionItems) = preProject
+		SGS\App.config = SGS\App.config
+		SGS\App.xaml = SGS\App.xaml
+		SGS\App.xaml.cs = SGS\App.xaml.cs
+		SGS\MainWindow.xaml = SGS\MainWindow.xaml
+		SGS\MainWindow.xaml.cs = SGS\MainWindow.xaml.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Persistance", "3 - Persistance", "{61C0D9B3-C5E7-4693-B6F4-724FED8EEC2A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Business", "2 - Business", "{D2BD854F-821F-43AB-B9D7-C658C782EE88}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sgs.persistance", "Sge.persistance\Sgs.persistance.csproj", "{4E2DFCF0-7C8F-4545-A698-D2BA997A2016}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F85F534B-24AB-43AB-983E-EB6B49117B28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F85F534B-24AB-43AB-983E-EB6B49117B28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F85F534B-24AB-43AB-983E-EB6B49117B28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F85F534B-24AB-43AB-983E-EB6B49117B28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E2DFCF0-7C8F-4545-A698-D2BA997A2016}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E2DFCF0-7C8F-4545-A698-D2BA997A2016}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E2DFCF0-7C8F-4545-A698-D2BA997A2016}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E2DFCF0-7C8F-4545-A698-D2BA997A2016}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F85F534B-24AB-43AB-983E-EB6B49117B28} = {AEF5C389-0EE1-4A96-B1E8-B9527E6E4764}
+		{4E2DFCF0-7C8F-4545-A698-D2BA997A2016} = {61C0D9B3-C5E7-4693-B6F4-724FED8EEC2A}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,476 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SGS_db.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="SGS_dbStoreContainer">
+    <EntitySet Name="Formations1" EntityType="SGS_db.Store.Formations1" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Cours" EntityType="SGS_db.Store.Cours" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Enseignants" EntityType="SGS_db.Store.Enseignants" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Etudiants" EntityType="SGS_db.Store.Etudiants" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Sessions1" EntityType="SGS_db.Store.Sessions1" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CoursFormations" EntityType="SGS_db.Store.CoursFormations" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Inscriptions" EntityType="SGS_db.Store.Inscriptions" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="CoursFormationsCours" Association="SGS_db.Store.CoursFormationsCours">
+      <End Role="CoursFormations" EntitySet="CoursFormations" />
+      <End Role="Cours" EntitySet="Cours" />
+    </AssociationSet>
+    <AssociationSet Name="CoursFormationsFormations" Association="SGS_db.Store.CoursFormationsFormations">
+      <End Role="CoursFormations" EntitySet="CoursFormations" />
+      <End Role="Formations" EntitySet="Formations1" />
+    </AssociationSet>
+    <AssociationSet Name="InscriptionsSessions" Association="SGS_db.Store.InscriptionsSessions">
+      <End Role="Inscriptions" EntitySet="Inscriptions" />
+      <End Role="Sessions" EntitySet="Sessions1" />
+    </AssociationSet>
+    <AssociationSet Name="InscriptionsEtudiants" Association="SGS_db.Store.InscriptionsEtudiants">
+      <End Role="Inscriptions" EntitySet="Inscriptions" />
+      <End Role="Etudiants" EntitySet="Etudiants" />
+    </AssociationSet>
+    <AssociationSet Name="SessionsCours" Association="SGS_db.Store.SessionsCours">
+      <End Role="Sessions" EntitySet="Sessions1" />
+      <End Role="Cours" EntitySet="Cours" />
+    </AssociationSet>
+    <AssociationSet Name="SessionsEnseignants" Association="SGS_db.Store.SessionsEnseignants">
+      <End Role="Sessions" EntitySet="Sessions1" />
+      <End Role="Enseignants" EntitySet="Enseignants" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Formations1">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nom" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Cours">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Titre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" Nullable="true" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="Enseignants">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nom" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Prenom" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Titre" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Bio" Type="nvarchar" Nullable="true" MaxLength="300" />
+    <Property Name="Rue" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Npa" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Localite" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Etudiants">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nom" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Prenom" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Rue" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Npa" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Localite" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sessions1">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MaxInscription" Type="int" Nullable="false" />
+    <Property Name="AnneeAcademique" Type="int" Nullable="false" />
+    <Property Name="JourCours" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="HeureCours" Type="datetime" Nullable="false" />
+    <Property Name="DateDebutCours" Type="datetime" Nullable="false" />
+    <Property Name="DateFinCours" Type="datetime" Nullable="false" />
+    <Property Name="CoursId" Type="int" Nullable="false" />
+    <Property Name="EnseignantsId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CoursFormations">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CoursId" Type="int" Nullable="false" />
+    <Property Name="FormationsId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Inscriptions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SessionsId" Type="int" Nullable="false" />
+    <Property Name="EtudiantsId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="CoursFormationsCours">
+    <End Role="CoursFormations" Type="SGS_db.Store.CoursFormations" Multiplicity="*" />
+    <End Role="Cours" Type="SGS_db.Store.Cours" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Cours">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CoursFormations">
+        <PropertyRef Name="CoursId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CoursFormationsFormations">
+    <End Role="CoursFormations" Type="SGS_db.Store.CoursFormations" Multiplicity="*" />
+    <End Role="Formations" Type="SGS_db.Store.Formations1" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Formations">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CoursFormations">
+        <PropertyRef Name="FormationsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="InscriptionsSessions">
+    <End Role="Inscriptions" Type="SGS_db.Store.Inscriptions" Multiplicity="*" />
+    <End Role="Sessions" Type="SGS_db.Store.Sessions1" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Sessions">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Inscriptions">
+        <PropertyRef Name="SessionsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="InscriptionsEtudiants">
+    <End Role="Inscriptions" Type="SGS_db.Store.Inscriptions" Multiplicity="*" />
+    <End Role="Etudiants" Type="SGS_db.Store.Etudiants" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Etudiants">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Inscriptions">
+        <PropertyRef Name="EtudiantsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SessionsCours">
+    <End Role="Sessions" Type="SGS_db.Store.Sessions1" Multiplicity="*" />
+    <End Role="Cours" Type="SGS_db.Store.Cours" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Cours">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Sessions">
+        <PropertyRef Name="CoursId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SessionsEnseignants">
+    <End Role="Sessions" Type="SGS_db.Store.Sessions1" Multiplicity="*" />
+    <End Role="Enseignants" Type="SGS_db.Store.Enseignants" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Enseignants">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Sessions">
+        <PropertyRef Name="EnseignantsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="SGS_db" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="SGS_dbContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Formations1" EntityType="SGS_db.Formations" />
+          <EntitySet Name="Cours" EntityType="SGS_db.Cours" />
+          <EntitySet Name="Enseignants" EntityType="SGS_db.Enseignants" />
+          <EntitySet Name="Etudiants" EntityType="SGS_db.Etudiants" />
+          <EntitySet Name="Sessions1" EntityType="SGS_db.Sessions" />
+          <EntitySet Name="CoursFormations" EntityType="SGS_db.CoursFormations" />
+          <EntitySet Name="Inscriptions" EntityType="SGS_db.Inscriptions" />
+          <AssociationSet Name="CoursFormationsCours" Association="SGS_db.CoursFormationsCours">
+            <End Role="CoursFormations" EntitySet="CoursFormations" />
+            <End Role="Cours" EntitySet="Cours" />
+          </AssociationSet>
+          <AssociationSet Name="CoursFormationsFormations" Association="SGS_db.CoursFormationsFormations">
+            <End Role="CoursFormations" EntitySet="CoursFormations" />
+            <End Role="Formations" EntitySet="Formations1" />
+          </AssociationSet>
+          <AssociationSet Name="InscriptionsSessions" Association="SGS_db.InscriptionsSessions">
+            <End Role="Inscriptions" EntitySet="Inscriptions" />
+            <End Role="Sessions" EntitySet="Sessions1" />
+          </AssociationSet>
+          <AssociationSet Name="InscriptionsEtudiants" Association="SGS_db.InscriptionsEtudiants">
+            <End Role="Inscriptions" EntitySet="Inscriptions" />
+            <End Role="Etudiants" EntitySet="Etudiants" />
+          </AssociationSet>
+          <AssociationSet Name="SessionsCours" Association="SGS_db.SessionsCours">
+            <End Role="Sessions" EntitySet="Sessions1" />
+            <End Role="Cours" EntitySet="Cours" />
+          </AssociationSet>
+          <AssociationSet Name="SessionsEnseignants" Association="SGS_db.SessionsEnseignants">
+            <End Role="Sessions" EntitySet="Sessions1" />
+            <End Role="Enseignants" EntitySet="Enseignants" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Formations">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom" Type="String" Nullable="false" />
+          <NavigationProperty Name="CoursFormations" Relationship="SGS_db.CoursFormationsFormations" FromRole="Formations" ToRole="CoursFormations" />
+        </EntityType>
+        <EntityType Name="Cours">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titre" Type="String" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="true" MaxLength="300" />
+          <NavigationProperty Name="CoursFormations" Relationship="SGS_db.CoursFormationsCours" FromRole="Cours" ToRole="CoursFormations" />
+          <NavigationProperty Name="Sessions" Relationship="SGS_db.SessionsCours" FromRole="Cours" ToRole="Sessions" />
+        </EntityType>
+        <EntityType Name="Enseignants">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom" Type="String" Nullable="false" />
+          <Property Name="Prenom" Type="String" Nullable="false" />
+          <Property Name="Titre" Type="String" Nullable="true" />
+          <Property Name="Bio" Type="String" Nullable="true" MaxLength="300" />
+          <Property Name="Rue" Type="String" Nullable="false" />
+          <Property Name="Npa" Type="String" Nullable="false" />
+          <Property Name="Localite" Type="String" Nullable="false" />
+          <NavigationProperty Name="Sessions" Relationship="SGS_db.SessionsEnseignants" FromRole="Enseignants" ToRole="Sessions" />
+        </EntityType>
+        <EntityType Name="Etudiants">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom" Type="String" Nullable="false" />
+          <Property Name="Prenom" Type="String" Nullable="false" />
+          <Property Name="Rue" Type="String" Nullable="false" />
+          <Property Name="Npa" Type="String" Nullable="false" />
+          <Property Name="Localite" Type="String" Nullable="false" />
+          <NavigationProperty Name="Inscriptions" Relationship="SGS_db.InscriptionsEtudiants" FromRole="Etudiants" ToRole="Inscriptions" />
+        </EntityType>
+        <EntityType Name="Sessions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaxInscription" Type="Int32" Nullable="false" />
+          <Property Name="AnneeAcademique" Type="Int32" Nullable="false" />
+          <Property Name="JourCours" Type="String" Nullable="false" />
+          <Property Name="HeureCours" Type="DateTime" Nullable="false" />
+          <Property Name="DateDebutCours" Type="DateTime" Nullable="false" />
+          <Property Name="DateFinCours" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Inscriptions" Relationship="SGS_db.InscriptionsSessions" FromRole="Sessions" ToRole="Inscriptions" />
+          <NavigationProperty Name="Cour" Relationship="SGS_db.SessionsCours" FromRole="Sessions" ToRole="Cours" />
+          <Property Name="CoursId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Enseignant" Relationship="SGS_db.SessionsEnseignants" FromRole="Sessions" ToRole="Enseignants" />
+          <Property Name="EnseignantsId" Type="Int32" Nullable="false" />
+          </EntityType>
+        <EntityType Name="CoursFormations">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Cour" Relationship="SGS_db.CoursFormationsCours" FromRole="CoursFormations" ToRole="Cours" />
+          <Property Name="CoursId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Formation" Relationship="SGS_db.CoursFormationsFormations" FromRole="CoursFormations" ToRole="Formations" />
+          <Property Name="FormationsId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Inscriptions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Session" Relationship="SGS_db.InscriptionsSessions" FromRole="Inscriptions" ToRole="Sessions" />
+          <Property Name="SessionsId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Etudiant" Relationship="SGS_db.InscriptionsEtudiants" FromRole="Inscriptions" ToRole="Etudiants" />
+          <Property Name="EtudiantsId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="CoursFormationsCours">
+          <End Type="SGS_db.CoursFormations" Role="CoursFormations" Multiplicity="*" />
+          <End Type="SGS_db.Cours" Role="Cours" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Cours">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CoursFormations">
+              <PropertyRef Name="CoursId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CoursFormationsFormations">
+          <End Type="SGS_db.CoursFormations" Role="CoursFormations" Multiplicity="*" />
+          <End Type="SGS_db.Formations" Role="Formations" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Formations">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CoursFormations">
+              <PropertyRef Name="FormationsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="InscriptionsSessions">
+          <End Type="SGS_db.Inscriptions" Role="Inscriptions" Multiplicity="*" />
+          <End Type="SGS_db.Sessions" Role="Sessions" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Sessions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Inscriptions">
+              <PropertyRef Name="SessionsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="InscriptionsEtudiants">
+          <End Type="SGS_db.Inscriptions" Role="Inscriptions" Multiplicity="*" />
+          <End Type="SGS_db.Etudiants" Role="Etudiants" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Etudiants">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Inscriptions">
+              <PropertyRef Name="EtudiantsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SessionsCours">
+          <End Type="SGS_db.Sessions" Role="Sessions" Multiplicity="*" />
+          <End Type="SGS_db.Cours" Role="Cours" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Cours">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sessions">
+              <PropertyRef Name="CoursId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SessionsEnseignants">
+          <End Type="SGS_db.Sessions" Role="Sessions" Multiplicity="*" />
+          <End Type="SGS_db.Enseignants" Role="Enseignants" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Enseignants">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sessions">
+              <PropertyRef Name="EnseignantsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SGS_dbStoreContainer" CdmEntityContainer="SGS_dbContainer">
+    <EntitySetMapping Name="Formations1">
+      <EntityTypeMapping TypeName="IsTypeOf(SGS_db.Formations)">
+        <MappingFragment StoreEntitySet="Formations1">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cours">
+      <EntityTypeMapping TypeName="IsTypeOf(SGS_db.Cours)">
+        <MappingFragment StoreEntitySet="Cours">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Titre" ColumnName="Titre" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Enseignants">
+      <EntityTypeMapping TypeName="IsTypeOf(SGS_db.Enseignants)">
+        <MappingFragment StoreEntitySet="Enseignants">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+          <ScalarProperty Name="Titre" ColumnName="Titre" />
+          <ScalarProperty Name="Bio" ColumnName="Bio" />
+          <ScalarProperty Name="Rue" ColumnName="Rue" />
+          <ScalarProperty Name="Npa" ColumnName="Npa" />
+          <ScalarProperty Name="Localite" ColumnName="Localite" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Etudiants">
+      <EntityTypeMapping TypeName="IsTypeOf(SGS_db.Etudiants)">
+        <MappingFragment StoreEntitySet="Etudiants">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+          <ScalarProperty Name="Rue" ColumnName="Rue" />
+          <ScalarProperty Name="Npa" ColumnName="Npa" />
+          <ScalarProperty Name="Localite" ColumnName="Localite" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sessions1">
+      <EntityTypeMapping TypeName="IsTypeOf(SGS_db.Sessions)">
+        <MappingFragment StoreEntitySet="Sessions1">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="MaxInscription" ColumnName="MaxInscription" />
+          <ScalarProperty Name="AnneeAcademique" ColumnName="AnneeAcademique" />
+          <ScalarProperty Name="JourCours" ColumnName="JourCours" />
+          <ScalarProperty Name="HeureCours" ColumnName="HeureCours" />
+          <ScalarProperty Name="DateDebutCours" ColumnName="DateDebutCours" />
+          <ScalarProperty Name="DateFinCours" ColumnName="DateFinCours" />
+          <ScalarProperty Name="CoursId" ColumnName="CoursId" />
+          <ScalarProperty Name="EnseignantsId" ColumnName="EnseignantsId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CoursFormations">
+      <EntityTypeMapping TypeName="IsTypeOf(SGS_db.CoursFormations)">
+        <MappingFragment StoreEntitySet="CoursFormations">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CoursId" ColumnName="CoursId" />
+          <ScalarProperty Name="FormationsId" ColumnName="FormationsId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Inscriptions">
+      <EntityTypeMapping TypeName="IsTypeOf(SGS_db.Inscriptions)">
+        <MappingFragment StoreEntitySet="Inscriptions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SessionsId" ColumnName="SessionsId" />
+          <ScalarProperty Name="EtudiantsId" ColumnName="EtudiantsId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
