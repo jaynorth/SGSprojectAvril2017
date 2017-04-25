@@ -1,4 +1,4 @@
-﻿// La génération de code T4 est activée pour le modèle 'C:\Users\jayweb\Google Drive\Formation\C Sharp\TP C SHARP\Avril 2017\Projet à fin du cours 05_04\SGS\Sge.persistance\Data\SGS_db.edmx'. 
+﻿// La génération de code T4 est activée pour le modèle 'C:\Users\jayweb\GIT Avril 2017\SGSprojectAvril2017\Sge.persistance\Data\SGS_db.edmx'. 
 // Pour activer la génération de code héritée, définissez la valeur de la propriété
 // du concepteur 'Stratégie de génération de code' sur 'ObjectContext hérité'. Cette propriété est disponible dans la fenêtre Propriétés lorsque le modèle
 //  est ouvert dans le concepteur.
