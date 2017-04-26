@@ -37,6 +37,8 @@ namespace Sge.persistance
                 }
             }
 
+            Console.ReadKey();
+
         }
     }
 }
